@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community Noticeboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bubbles" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="board">
+  <header class="banner">
+    <h1>Community Noticeboard</h1>
+    <p>Pin a note, read what your neighbours posted.</p>
+  </header>
+
+  <!-- Shown when logged out -->
+  <section id="authSection" class="panel">
+    <h2 id="authHeading" class="panel-title">Log in</h2>
+    <div class="panel-body">
+      <form id="authForm">
+        <input type="text" id="displayName" placeholder="Display name (shown on your posts)" maxlength="30" hidden>
+        <input type="email" id="email" placeholder="Email" required autocomplete="email">
+        <input type="password" id="password" placeholder="Password (min 6 characters)" required minlength="6" autocomplete="current-password">
+        <button type="submit" id="authSubmit">Log in</button>
+      </form>
+      <p class="auth-toggle">
+        <span id="toggleText">No account yet?</span>
+        <a href="#" id="toggleLink">Register</a>
+      </p>
+      <p id="authMessage" class="error" role="status"></p>
+    </div>
+  </section>
+
+  <!-- Shown when logged in -->
+  <section id="appSection" hidden>
+    <div class="userbar">
+      <span>Logged in as <strong id="currentUser"></strong></span>
+      <button type="button" id="logoutBtn" class="small">Log out</button>
+    </div>
+
+    <div class="panel">
+      <h2 class="panel-title">Post a message</h2>
+      <div class="panel-body">
+        <form id="messageForm">
+          <input type="text" id="title" placeholder="Message title" required>
+          <textarea id="message" placeholder="Write your message" required></textarea>
+          <label class="file-label" for="image">Add a picture (optional, max 5 MB)</label>
+          <input type="file" id="image" accept="image/jpeg,image/png,image/gif,image/webp">
+          <button type="submit" id="postBtn">Post message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">Recent messages</h2>
+    <div id="messages" class="thread"></div>
+  </section>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
